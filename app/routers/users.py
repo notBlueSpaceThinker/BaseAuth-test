@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends
-from app.schemas.user import User
+from app.schemas.user import User, UserInDB
 from app.auth import register_user, authenticate_user
 
 
@@ -11,5 +11,5 @@ async def register(user: User):
     return {"message": f"User {user.username} successfully registered"}
 
 @router.get("/login")
-async def login(user: User = Depends(authenticate_user)):
+async def login(user: UserInDB = Depends(authenticate_user)):
     return {"message": f"Welcome, {user.username}"}
