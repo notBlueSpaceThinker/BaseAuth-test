@@ -33,6 +33,7 @@ def authenticate_user(credentials: HTTPBasicCredentials = Depends(security)) -> 
         detail="Invalid credentials"
     )
 
+
 def authenticate_doc(credentials: HTTPBasicCredentials = Depends(security)) -> None:
     if credentials.username == CONFIG.DOCS_USER and credentials.password == CONFIG.DOCS_PASSWORD:
         return None
